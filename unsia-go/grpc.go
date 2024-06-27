@@ -37,7 +37,7 @@ package main
 
 * membuat file .proto dikenalkan dua hal :
 * message & kontrak
-*/ 
-func grpc() {
+*/
+// func grpc() {
 
-}
+// }
