@@ -10,14 +10,6 @@ message City {
 
 message EmptyMessage{}
 
-message CitiesStream{
-    City city = 1;
-}
-
-message Cities {
-    repeated City cities = 1;
-}
-
 message Id {
     int32 id = 1;
 }

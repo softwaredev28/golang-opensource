@@ -22,7 +22,7 @@ func main() {
 
 	    // =========================================================================
     // Logging
-    log := log.New(os.Stdout, "Essentials : ", log.LstdFlags|log.Lmicroseconds|log.Lshortfile)
+    log := log.New(os.Stdout, "Unsia : ", log.LstdFlags|log.Lmicroseconds|log.Lshortfile)
 
 	db, err := database.OpenDB()
     if err != nil {

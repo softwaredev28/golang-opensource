@@ -19,12 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion8
 
 const (
-	CitiesService_GetCity_FullMethodName        = "/cities.CitiesService/GetCity"
-	CitiesService_GetCities_FullMethodName      = "/cities.CitiesService/GetCities"
-	CitiesService_GetUnaryCities_FullMethodName = "/cities.CitiesService/GetUnaryCities"
-	CitiesService_Create_FullMethodName         = "/cities.CitiesService/Create"
-	CitiesService_Update_FullMethodName         = "/cities.CitiesService/Update"
-	CitiesService_Delete_FullMethodName         = "/cities.CitiesService/Delete"
+	CitiesService_GetCity_FullMethodName = "/cities.CitiesService/GetCity"
+	CitiesService_Create_FullMethodName  = "/cities.CitiesService/Create"
+	CitiesService_Update_FullMethodName  = "/cities.CitiesService/Update"
+	CitiesService_Delete_FullMethodName  = "/cities.CitiesService/Delete"
 )
 
 // CitiesServiceClient is the client API for CitiesService service.
@@ -32,8 +30,6 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type CitiesServiceClient interface {
 	GetCity(ctx context.Context, in *Id, opts ...grpc.CallOption) (*City, error)
-	GetCities(ctx context.Context, in *EmptyMessage, opts ...grpc.CallOption) (CitiesService_GetCitiesClient, error)
-	GetUnaryCities(ctx context.Context, in *EmptyMessage, opts ...grpc.CallOption) (*Cities, error)
 	Create(ctx context.Context, in *CityInput, opts ...grpc.CallOption) (*City, error)
 	Update(ctx context.Context, in *City, opts ...grpc.CallOption) (*City, error)
 	Delete(ctx context.Context, in *Id, opts ...grpc.CallOption) (*MyBoolean, error)
@@ -51,49 +47,6 @@ func (c *citiesServiceClient) GetCity(ctx context.Context, in *Id, opts ...grpc.
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(City)
 	err := c.cc.Invoke(ctx, CitiesService_GetCity_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *citiesServiceClient) GetCities(ctx context.Context, in *EmptyMessage, opts ...grpc.CallOption) (CitiesService_GetCitiesClient, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	stream, err := c.cc.NewStream(ctx, &CitiesService_ServiceDesc.Streams[0], CitiesService_GetCities_FullMethodName, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &citiesServiceGetCitiesClient{ClientStream: stream}
-	if err := x.ClientStream.SendMsg(in); err != nil {
-		return nil, err
-	}
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	return x, nil
-}
-
-type CitiesService_GetCitiesClient interface {
-	Recv() (*CitiesStream, error)
-	grpc.ClientStream
-}
-
-type citiesServiceGetCitiesClient struct {
-	grpc.ClientStream
-}
-
-func (x *citiesServiceGetCitiesClient) Recv() (*CitiesStream, error) {
-	m := new(CitiesStream)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
-}
-
-func (c *citiesServiceClient) GetUnaryCities(ctx context.Context, in *EmptyMessage, opts ...grpc.CallOption) (*Cities, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(Cities)
-	err := c.cc.Invoke(ctx, CitiesService_GetUnaryCities_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -135,8 +88,6 @@ func (c *citiesServiceClient) Delete(ctx context.Context, in *Id, opts ...grpc.C
 // for forward compatibility
 type CitiesServiceServer interface {
 	GetCity(context.Context, *Id) (*City, error)
-	GetCities(*EmptyMessage, CitiesService_GetCitiesServer) error
-	GetUnaryCities(context.Context, *EmptyMessage) (*Cities, error)
 	Create(context.Context, *CityInput) (*City, error)
 	Update(context.Context, *City) (*City, error)
 	Delete(context.Context, *Id) (*MyBoolean, error)
@@ -148,12 +99,6 @@ type UnimplementedCitiesServiceServer struct {
 
 func (UnimplementedCitiesServiceServer) GetCity(context.Context, *Id) (*City, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetCity not implemented")
-}
-func (UnimplementedCitiesServiceServer) GetCities(*EmptyMessage, CitiesService_GetCitiesServer) error {
-	return status.Errorf(codes.Unimplemented, "method GetCities not implemented")
-}
-func (UnimplementedCitiesServiceServer) GetUnaryCities(context.Context, *EmptyMessage) (*Cities, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetUnaryCities not implemented")
 }
 func (UnimplementedCitiesServiceServer) Create(context.Context, *CityInput) (*City, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
@@ -190,45 +135,6 @@ func _CitiesService_GetCity_Handler(srv interface{}, ctx context.Context, dec fu
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(CitiesServiceServer).GetCity(ctx, req.(*Id))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _CitiesService_GetCities_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(EmptyMessage)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
-	}
-	return srv.(CitiesServiceServer).GetCities(m, &citiesServiceGetCitiesServer{ServerStream: stream})
-}
-
-type CitiesService_GetCitiesServer interface {
-	Send(*CitiesStream) error
-	grpc.ServerStream
-}
-
-type citiesServiceGetCitiesServer struct {
-	grpc.ServerStream
-}
-
-func (x *citiesServiceGetCitiesServer) Send(m *CitiesStream) error {
-	return x.ServerStream.SendMsg(m)
-}
-
-func _CitiesService_GetUnaryCities_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(EmptyMessage)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(CitiesServiceServer).GetUnaryCities(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: CitiesService_GetUnaryCities_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CitiesServiceServer).GetUnaryCities(ctx, req.(*EmptyMessage))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -299,10 +205,6 @@ var CitiesService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _CitiesService_GetCity_Handler,
 		},
 		{
-			MethodName: "GetUnaryCities",
-			Handler:    _CitiesService_GetUnaryCities_Handler,
-		},
-		{
 			MethodName: "Create",
 			Handler:    _CitiesService_Create_Handler,
 		},
@@ -315,12 +217,6 @@ var CitiesService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _CitiesService_Delete_Handler,
 		},
 	},
-	Streams: []grpc.StreamDesc{
-		{
-			StreamName:    "GetCities",
-			Handler:       _CitiesService_GetCities_Handler,
-			ServerStreams: true,
-		},
-	},
+	Streams:  []grpc.StreamDesc{},
 	Metadata: "city_service.proto",
 }

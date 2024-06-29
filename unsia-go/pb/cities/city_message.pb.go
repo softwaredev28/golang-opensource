@@ -113,100 +113,6 @@ func (*EmptyMessage) Descriptor() ([]byte, []int) {
 	return file_city_message_proto_rawDescGZIP(), []int{1}
 }
 
-type CitiesStream struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	City *City `protobuf:"bytes,1,opt,name=city,proto3" json:"city,omitempty"`
-}
-
-func (x *CitiesStream) Reset() {
-	*x = CitiesStream{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_city_message_proto_msgTypes[2]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *CitiesStream) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CitiesStream) ProtoMessage() {}
-
-func (x *CitiesStream) ProtoReflect() protoreflect.Message {
-	mi := &file_city_message_proto_msgTypes[2]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CitiesStream.ProtoReflect.Descriptor instead.
-func (*CitiesStream) Descriptor() ([]byte, []int) {
-	return file_city_message_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *CitiesStream) GetCity() *City {
-	if x != nil {
-		return x.City
-	}
-	return nil
-}
-
-type Cities struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Cities []*City `protobuf:"bytes,1,rep,name=cities,proto3" json:"cities,omitempty"`
-}
-
-func (x *Cities) Reset() {
-	*x = Cities{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_city_message_proto_msgTypes[3]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *Cities) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Cities) ProtoMessage() {}
-
-func (x *Cities) ProtoReflect() protoreflect.Message {
-	mi := &file_city_message_proto_msgTypes[3]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Cities.ProtoReflect.Descriptor instead.
-func (*Cities) Descriptor() ([]byte, []int) {
-	return file_city_message_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *Cities) GetCities() []*City {
-	if x != nil {
-		return x.Cities
-	}
-	return nil
-}
-
 type Id struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -218,7 +124,7 @@ type Id struct {
 func (x *Id) Reset() {
 	*x = Id{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_city_message_proto_msgTypes[4]
+		mi := &file_city_message_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -231,7 +137,7 @@ func (x *Id) String() string {
 func (*Id) ProtoMessage() {}
 
 func (x *Id) ProtoReflect() protoreflect.Message {
-	mi := &file_city_message_proto_msgTypes[4]
+	mi := &file_city_message_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -244,7 +150,7 @@ func (x *Id) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Id.ProtoReflect.Descriptor instead.
 func (*Id) Descriptor() ([]byte, []int) {
-	return file_city_message_proto_rawDescGZIP(), []int{4}
+	return file_city_message_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Id) GetId() int32 {
@@ -265,7 +171,7 @@ type CityInput struct {
 func (x *CityInput) Reset() {
 	*x = CityInput{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_city_message_proto_msgTypes[5]
+		mi := &file_city_message_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -278,7 +184,7 @@ func (x *CityInput) String() string {
 func (*CityInput) ProtoMessage() {}
 
 func (x *CityInput) ProtoReflect() protoreflect.Message {
-	mi := &file_city_message_proto_msgTypes[5]
+	mi := &file_city_message_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -291,7 +197,7 @@ func (x *CityInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CityInput.ProtoReflect.Descriptor instead.
 func (*CityInput) Descriptor() ([]byte, []int) {
-	return file_city_message_proto_rawDescGZIP(), []int{5}
+	return file_city_message_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *CityInput) GetName() string {
@@ -312,7 +218,7 @@ type MyBoolean struct {
 func (x *MyBoolean) Reset() {
 	*x = MyBoolean{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_city_message_proto_msgTypes[6]
+		mi := &file_city_message_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -325,7 +231,7 @@ func (x *MyBoolean) String() string {
 func (*MyBoolean) ProtoMessage() {}
 
 func (x *MyBoolean) ProtoReflect() protoreflect.Message {
-	mi := &file_city_message_proto_msgTypes[6]
+	mi := &file_city_message_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -338,7 +244,7 @@ func (x *MyBoolean) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MyBoolean.ProtoReflect.Descriptor instead.
 func (*MyBoolean) Descriptor() ([]byte, []int) {
-	return file_city_message_proto_rawDescGZIP(), []int{6}
+	return file_city_message_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *MyBoolean) GetBoolean() bool {
@@ -356,21 +262,15 @@ var file_city_message_proto_rawDesc = []byte{
 	0x43, 0x69, 0x74, 0x79, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05,
 	0x52, 0x02, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01,
 	0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x22, 0x0e, 0x0a, 0x0c, 0x45, 0x6d, 0x70, 0x74,
-	0x79, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0x30, 0x0a, 0x0c, 0x43, 0x69, 0x74, 0x69,
-	0x65, 0x73, 0x53, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x12, 0x20, 0x0a, 0x04, 0x63, 0x69, 0x74, 0x79,
-	0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0c, 0x2e, 0x63, 0x69, 0x74, 0x69, 0x65, 0x73, 0x2e,
-	0x43, 0x69, 0x74, 0x79, 0x52, 0x04, 0x63, 0x69, 0x74, 0x79, 0x22, 0x2e, 0x0a, 0x06, 0x43, 0x69,
-	0x74, 0x69, 0x65, 0x73, 0x12, 0x24, 0x0a, 0x06, 0x63, 0x69, 0x74, 0x69, 0x65, 0x73, 0x18, 0x01,
-	0x20, 0x03, 0x28, 0x0b, 0x32, 0x0c, 0x2e, 0x63, 0x69, 0x74, 0x69, 0x65, 0x73, 0x2e, 0x43, 0x69,
-	0x74, 0x79, 0x52, 0x06, 0x63, 0x69, 0x74, 0x69, 0x65, 0x73, 0x22, 0x14, 0x0a, 0x02, 0x49, 0x64,
-	0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x69, 0x64,
-	0x22, 0x1f, 0x0a, 0x09, 0x43, 0x69, 0x74, 0x79, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x12, 0x12, 0x0a,
-	0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d,
-	0x65, 0x22, 0x25, 0x0a, 0x09, 0x4d, 0x79, 0x42, 0x6f, 0x6f, 0x6c, 0x65, 0x61, 0x6e, 0x12, 0x18,
-	0x0a, 0x07, 0x62, 0x6f, 0x6f, 0x6c, 0x65, 0x61, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52,
-	0x07, 0x62, 0x6f, 0x6f, 0x6c, 0x65, 0x61, 0x6e, 0x42, 0x12, 0x5a, 0x10, 0x70, 0x62, 0x2f, 0x63,
-	0x69, 0x74, 0x69, 0x65, 0x73, 0x3b, 0x63, 0x69, 0x74, 0x69, 0x65, 0x73, 0x62, 0x06, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x33,
+	0x79, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0x14, 0x0a, 0x02, 0x49, 0x64, 0x12, 0x0e,
+	0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x69, 0x64, 0x22, 0x1f,
+	0x0a, 0x09, 0x43, 0x69, 0x74, 0x79, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x6e,
+	0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x22,
+	0x25, 0x0a, 0x09, 0x4d, 0x79, 0x42, 0x6f, 0x6f, 0x6c, 0x65, 0x61, 0x6e, 0x12, 0x18, 0x0a, 0x07,
+	0x62, 0x6f, 0x6f, 0x6c, 0x65, 0x61, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x07, 0x62,
+	0x6f, 0x6f, 0x6c, 0x65, 0x61, 0x6e, 0x42, 0x12, 0x5a, 0x10, 0x70, 0x62, 0x2f, 0x63, 0x69, 0x74,
+	0x69, 0x65, 0x73, 0x3b, 0x63, 0x69, 0x74, 0x69, 0x65, 0x73, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x33,
 }
 
 var (
@@ -385,24 +285,20 @@ func file_city_message_proto_rawDescGZIP() []byte {
 	return file_city_message_proto_rawDescData
 }
 
-var file_city_message_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_city_message_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_city_message_proto_goTypes = []any{
 	(*City)(nil),         // 0: cities.City
 	(*EmptyMessage)(nil), // 1: cities.EmptyMessage
-	(*CitiesStream)(nil), // 2: cities.CitiesStream
-	(*Cities)(nil),       // 3: cities.Cities
-	(*Id)(nil),           // 4: cities.Id
-	(*CityInput)(nil),    // 5: cities.CityInput
-	(*MyBoolean)(nil),    // 6: cities.MyBoolean
+	(*Id)(nil),           // 2: cities.Id
+	(*CityInput)(nil),    // 3: cities.CityInput
+	(*MyBoolean)(nil),    // 4: cities.MyBoolean
 }
 var file_city_message_proto_depIdxs = []int32{
-	0, // 0: cities.CitiesStream.city:type_name -> cities.City
-	0, // 1: cities.Cities.cities:type_name -> cities.City
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	0, // [0:0] is the sub-list for method output_type
+	0, // [0:0] is the sub-list for method input_type
+	0, // [0:0] is the sub-list for extension type_name
+	0, // [0:0] is the sub-list for extension extendee
+	0, // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_city_message_proto_init() }
@@ -436,30 +332,6 @@ func file_city_message_proto_init() {
 			}
 		}
 		file_city_message_proto_msgTypes[2].Exporter = func(v any, i int) any {
-			switch v := v.(*CitiesStream); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_city_message_proto_msgTypes[3].Exporter = func(v any, i int) any {
-			switch v := v.(*Cities); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_city_message_proto_msgTypes[4].Exporter = func(v any, i int) any {
 			switch v := v.(*Id); i {
 			case 0:
 				return &v.state
@@ -471,7 +343,7 @@ func file_city_message_proto_init() {
 				return nil
 			}
 		}
-		file_city_message_proto_msgTypes[5].Exporter = func(v any, i int) any {
+		file_city_message_proto_msgTypes[3].Exporter = func(v any, i int) any {
 			switch v := v.(*CityInput); i {
 			case 0:
 				return &v.state
@@ -483,7 +355,7 @@ func file_city_message_proto_init() {
 				return nil
 			}
 		}
-		file_city_message_proto_msgTypes[6].Exporter = func(v any, i int) any {
+		file_city_message_proto_msgTypes[4].Exporter = func(v any, i int) any {
 			switch v := v.(*MyBoolean); i {
 			case 0:
 				return &v.state
@@ -502,7 +374,7 @@ func file_city_message_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_city_message_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
