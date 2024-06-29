@@ -6,6 +6,9 @@ import (
 	"log"
 	"unsia/models"
 	"unsia/pb/cities"
+
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 // City struct
@@ -22,8 +25,6 @@ func (s *City) GetCity(ctx context.Context, in *cities.Id) (*cities.City, error)
 	err := cityModel.Get(ctx,s.DB, in)
 	return &cityModel.Pb, err
 }
-
-// here s
 
 func (s *City) Create(ctx context.Context, in *cities.CityInput) (*cities.City, error) {
 	var cityModel models.City
@@ -46,3 +47,35 @@ func (s *City) Update(ctx context.Context, in *cities.City) (*cities.City, error
 	err := cityModel.Update(ctx, s.DB, in)
 	return &cityModel.Pb, err
 }
+
+
+// List func
+func (s *City) GetCities(in *cities.EmptyMessage, stream cities.CitiesService_GetCitiesServer) error {
+	query := `select id, name from cities`
+	row, err := s.DB.Query(query)
+	if err != nil {
+		return err
+	}
+
+	defer row.Close()
+	for row.Next() {
+		var city cities.City
+		err = row.Scan(&city.Id, &city.Name)
+		
+		if err != nil {
+			return err
+		}
+
+		res:= &cities.CitiesStream {
+			City: &city,
+		}
+
+		err := stream.Send(res)
+			if err != nil {
+				return status.Errorf(codes.Unknown, "cannot send stream response: %v", err)
+		}
+	}
+
+	return nil
+}
+
